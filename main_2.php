@@ -1,0 +1,11 @@
+<p align="center" style="color:#990000;font-size:16px;font-weight:bold;" >Management Software</p>
+<img src="images/make-online-complaint-btn.jpg"  style="float:left;border:0px; padding:10px;"/>
+<p>The <strong>University of Calabar</strong> - also known as <strong>UNICAL</strong> - is a <a href="https://en.wikipedia.org/wiki/List_of_universities_in_Nigeria" title="List of universities in Nigeria">university</a> situated in <a href="https://en.wikipedia.org/wiki/Calabar" title="Calabar">Calabar</a>, <a href="https://en.wikipedia.org/wiki/Cross_River_State" title="Cross River State">Cross River State</a>, southeastern <a href="https://en.wikipedia.org/wiki/Nigeria" title="Nigeria">Nigeria</a>.   It is one of Nigeria's second generation federal universities. The   University of Calabar was a campus of the University of Nigeria until   1975. The architecture was designed by <a href="https://en.wikipedia.org/wiki/John_Elliott_%28architect%29" title="John Elliott (architect)">John Elliott</a>. It was established by decree to fulfill this traditional mandate, its motto &ldquo;Knowledge for Service&rdquo;.</p>
+<p>The Vice Chancellor is Prof.Zana Akpagu. The Registrar is Mr. Moses   Abang. The University of Calabar was one of the foremost Nigerian   Universities to automate students' registration processes through the   College Portal,<a href="https://en.wikipedia.org/wiki/University_of_Calabar#cite_note-1">[1]</a> and has taken a step further to automate her alumni relations which   includes an online transcript request and processing first of its kind   in the country.<a href="https://en.wikipedia.org/wiki/University_of_Calabar#cite_note-2">[2]</a></p>
+<p>The male students are known as Malabites, while the female students   are Malabresses. The male hostel is called Malabo. This was a result of   challenges faced by the students at a time which coincided with the   suffering experienced in Malabo by Nigerian deportees from <a href="https://en.wikipedia.org/wiki/Equatorial_Guinea" title="Equatorial Guinea">Equatorial Guinea</a> (whose capital is <a href="https://en.wikipedia.org/wiki/Malabo" title="Malabo">Malabo</a>) at the time.</p>
+<p align="left" style="line-height:24px; padding:10px;"><br/>
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
