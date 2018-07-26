@@ -1,7 +1,7 @@
 <?php
 require_once './library/config.php';
 require_once './library/functions.php';
-
+//session_start();
 checkUser();
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
@@ -36,6 +36,10 @@ switch ($action) {
 	case 'deleteEngg' :
 		deleteEngg();
 	break;
+
+	case 'deleteDept' :
+		deleteDept();
+	break;
 	
 	case 'deleteCust' :
 		deleteCust();
@@ -56,6 +60,10 @@ switch ($action) {
 	case 'addCourses':
 		addCourses();
 	break;
+
+	case 'addCourses_admin':
+		addCourses_admin();
+	break;
 	
 	case 'addCust' :
 		addCust();
@@ -67,6 +75,10 @@ switch ($action) {
 	
 	case 'editEngg' :
 		editEngg();
+	break;
+
+	case 'editDept' :
+		editDept();
 	break;
 	case 'printRT' :
 		printRTS();
@@ -624,7 +636,7 @@ function addDept()
 	$department = $_POST['department'];
 	
 	$sql = "INSERT INTO department (id, name) 
-			VALUES (null, $department)";
+			VALUES (null, '$department')";
 		
 	$result = dbQuery($sql);
 	//header("Location: index.php?view=bal&error=" . urlencode("$data"));	
@@ -633,19 +645,32 @@ function addDept()
 }
 
 function addCourses()
-{
-	//echo 'Make Complain...';
-	$department = $_POST['department'];
-	
-	$sql = "INSERT INTO department (id, name) 
-			VALUES (null, $department)";
-		
-	$result = dbQuery($sql);
-	//header("Location: index.php?view=bal&error=" . urlencode("$data"));	
-	header("Location: view.php?mod=admin&view=deptDetails");	
-	exit;	
+{	
+	 $loop = $_POST['loop'];
+	 $matric = $_SESSION['matric'];
+	//  echo print_r($_POST);
+	//  echo $loop. "<br />";
+	//  echo $matric;
+	for ($i=1; $i<=$loop; $i++) {
+		$id = $_POST['course_'.$i."_".$i];
+		$sql = "INSERT INTO students_courses VALUES (null, $id, $matric)";
+		$result = dbQuery($sql);
+	}
+	$_SESSION['msg'] = 'Courses added successfully';		
+	header("Location: view.php?mod=student&view=regCourses");	
+	 exit;
+	//echo "OK";	
 }
 
+function addCourses_admin() {
+	$dept = $_POST['dept_id'];
+	$name = $_POST['course_name'];
+	$level = $_POST['level'];
+	$sems = $_POST['sems'];
+	$sql = "INSERT INTO courses VALUES (null, $dept, $name, $level, $sems)";
+	$result = dbQuery($sql);
+	header("Location: view.php?mod=admin&view=regCourses");	
+}
 
 function deleteEngg()
 {
@@ -656,6 +681,18 @@ function deleteEngg()
 				WHERE eid = $eId";	
 	$result = dbQuery($sql);
 	header("Location: view.php?mod=admin&view=enggDetails");	
+	exit;	
+}
+
+function deleteDept()
+{
+	//echo 'Add Comment on Complain...';
+    $eId = $_GET['eId'];
+	//$empComment = $_POST['empComment'];
+	$sql = "DELETE FROM department 
+				WHERE id = $eId";	
+	$result = dbQuery($sql);
+	header("Location: view.php?mod=admin&view=deptDetails");	
 	exit;	
 }
 
@@ -692,6 +729,22 @@ function editEngg()
 	exit;	
 }
 
+function editDept()
+{
+	//echo 'Make Complain...';
+    $id = $_POST['id'];
+	$name = $_POST['department'];
+	print_r($_POST);
+	
+	$sql = "UPDATE department 
+			SET name = '$name'
+			WHERE id = '$id'"; 	
+	$result = dbQuery($sql);
+	//header("Location: index.php?view=bal&error=" . urlencode("$data"));	
+	header("Location: view.php?mod=admin&view=deptDetails");	
+	exit;	
+}
+ 
 function editStud()
 {
 	//echo 'Make Complain...';

@@ -44,6 +44,12 @@ function deleteEngg(eId)
 		window.location.href = 'process.php?action=deleteEngg&eId=' + eId;
 	}
 }
+function deleteDept(eId)
+{
+	if (confirm('Do you want to delete this Department?')) {
+		window.location.href = 'process.php?action=deleteDept&eId=' + eId;
+	}
+}
 function deleteStd(Id)
 {
 	if (confirm('Do you want to delete this Student?')) {
@@ -54,6 +60,12 @@ function deleteStd(Id)
 function editEnggDetail(eId)
 {
 	var url = 'view.php?mod=admin&view=doEdit&eId=' + eId;
+	//alert(url);
+	window.location.href  = url;
+}
+function editDeptDetail(eId)
+{
+	var url = 'view.php?mod=admin&view=doEditDept&Id=' + eId;
 	//alert(url);
 	window.location.href  = url;
 }

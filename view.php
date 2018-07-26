@@ -109,6 +109,11 @@ elseif($mod == 'admin'){
 			$content 	= 'editEngg.php';		
 			$pageTitle 	= 'Complain Management System - Edit Engineer';
 		break;
+
+		case 'doEditDept' :
+			$content 	= 'editDept.php';		
+			$pageTitle 	= 'Complain Management System - Edit Engineer';
+		break;
 		
 		case 'doEditStd' :
 			$content 	= 'editStd.php';		
@@ -126,6 +131,11 @@ elseif($mod == 'admin'){
 
 		case 'addDept' :
 			$content 	= 'addDept.php';		
+			$pageTitle 	= 'Complain Management System - Edit Engineer';
+		break;
+
+		case 'addCourses' :
+			$content 	= 'addCourses.php';		
 			$pageTitle 	= 'Complain Management System - Edit Engineer';
 		break;
 
@@ -202,10 +212,12 @@ elseif ($mod == 'student') {
 	switch($view) {
 		case 'checkResult';
 		$content = 'check_result.php';
+		$pageTitle 	= 'Student - Check Result ';
 		break;
 
 		case 'regCourses':
 		$content = 'register_courses.php';
+		$pageTitle 	= 'Student - Register Courses ';
 		break;
 	}
 }

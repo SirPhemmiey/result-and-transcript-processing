@@ -50,6 +50,9 @@ $cust_id = (int)$_SESSION['user_id'];
 	// }
 	// $i += 1;
 ?>
+<?php if (isset($_SESSION['msg'])) {
+    echo $_SESSION['msg']; }?>
+<?php //session_unregister('msg'); }?>
 <h3 align="center">Register your courses</h3>
 <form action="process.php?action=addCourses" method="post"  name="frmListUser" id="frmListUser">
   <table width="600" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#336699" class="entryTable">
@@ -85,9 +88,9 @@ $cust_id = (int)$_SESSION['user_id'];
             </tr>
 
               <tr class="entryTable">
-              <td class="label">Level</td>
+              <td class="label">Semester</td>
               <td class="content"><select name="sems" id="sems">
-              <option value="choose">--Choose a level--</option>
+              <option value="choose">--Choose a semester--</option>
               <option value="first">First Semester</option>
              <option value="second">Second Semester</option>
               </select></td>

@@ -63,6 +63,7 @@ function doLogin()
 				$_SESSION['user_id'] = $row['id'];
 				$_SESSION['user_name'] = $row['sname'];
 				$_SESSION['user_type'] = $uType;
+				$_SESSION['matric'] = $row['matric'];
 			}//if
 			header('Location: '.WEB_ROOT.'../processing/index_student.php');
 			exit;		
