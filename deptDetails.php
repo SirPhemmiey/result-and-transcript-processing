@@ -24,7 +24,7 @@
 	?>
     <tr class="<?php echo $class; ?>" style="height:25px;">
       <td>&nbsp;<?php echo $name; ?></td>
-      <td width="207" align="center"><a href="javascript:editEnggDetail(<?php echo $id; ?>);">Edit</a> / <a href="javascript:deleteEngg(<?php echo $id; ?>);">Delete</a> </td>
+      <td width="207" align="center"><a href="javascript:editDeptDetail(<?php echo $id; ?>);">Edit</a> / <a href="javascript:deleteDept(<?php echo $id; ?>);">Delete</a> </td>
     </tr>
     <?php
 	} // end while
