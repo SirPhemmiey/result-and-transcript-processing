@@ -20,6 +20,7 @@ $img = WEB_ROOT . 'images/complains.jpg';
 <link href="<?php echo WEB_ROOT;?>include/main.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" type="text/javascript" src="<?php echo WEB_ROOT;?>library/common.js"></script>
 <script language="JavaScript" type="text/javascript" src="<?php echo WEB_ROOT;?>library/complains.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo WEB_ROOT;?>js/jquery-3.1.1.min.js"></script>
 </head>
 <body> 
 <br/><br/>

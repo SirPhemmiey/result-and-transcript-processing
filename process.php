@@ -52,6 +52,10 @@ switch ($action) {
 	case 'addDept' :
 		addDept();
 	break;
+
+	case 'addCourses':
+		addCourses();
+	break;
 	
 	case 'addCust' :
 		addCust();
@@ -627,6 +631,21 @@ function addDept()
 	header("Location: view.php?mod=admin&view=deptDetails");	
 	exit;	
 }
+
+function addCourses()
+{
+	//echo 'Make Complain...';
+	$department = $_POST['department'];
+	
+	$sql = "INSERT INTO department (id, name) 
+			VALUES (null, $department)";
+		
+	$result = dbQuery($sql);
+	//header("Location: index.php?view=bal&error=" . urlencode("$data"));	
+	header("Location: view.php?mod=admin&view=deptDetails");	
+	exit;	
+}
+
 
 function deleteEngg()
 {
