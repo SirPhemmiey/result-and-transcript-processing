@@ -648,9 +648,6 @@ function addCourses()
 {	
 	 $loop = $_POST['loop'];
 	 $matric = $_SESSION['matric'];
-	//  echo print_r($_POST);
-	//  echo $loop. "<br />";
-	//  echo $matric;
 	for ($i=1; $i<=$loop; $i++) {
 		$id = $_POST['course_'.$i."_".$i];
 		$sql = "INSERT INTO students_courses VALUES (null, $id, $matric)";
@@ -659,17 +656,23 @@ function addCourses()
 	$_SESSION['msg'] = 'Courses added successfully';		
 	header("Location: view.php?mod=student&view=regCourses");	
 	 exit;
-	//echo "OK";	
 }
 
 function addCourses_admin() {
-	$dept = $_POST['dept_id'];
-	$name = $_POST['course_name'];
-	$level = $_POST['level'];
-	$sems = $_POST['sems'];
-	$sql = "INSERT INTO courses VALUES (null, $dept, $name, $level, $sems)";
-	$result = dbQuery($sql);
-	header("Location: view.php?mod=admin&view=regCourses");	
+
+	$loop = $_POST['loop'];
+	for ($i=1; $i<=$loop; $i++) {
+		$dept = $_POST['dept_id'];
+		$name = $_POST['name_'.$i];
+		$level = $_POST['level'];
+		$sems = $_POST['sems'];
+		$units = $_POST['units_'.$i];
+		$sql = "INSERT INTO courses VALUES (null, '$dept', '$name', $units, '$level', '$sems')";
+		$result = dbQuery($sql);
+	}
+	$_SESSION['msg'] = 'Courses added successfully';
+	header("Location: view.php?mod=admin&view=addCourses");	
+	exit;
 }
 
 function deleteEngg()

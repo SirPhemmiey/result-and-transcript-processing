@@ -77,7 +77,7 @@ function editStdDetail(Id)
 }
 
 function addGrade(id) {
-	var url = 'view.php?';
+	var url = 'view.php?mod=employee&view=';
 }
 
 function deleteCust(cId)

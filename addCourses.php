@@ -72,7 +72,9 @@ ORDER BY name ASC";
 $result = dbQuery($sql);
 
 ?>
-
+<?php if (isset($_SESSION['msg'])) {
+    echo $_SESSION['msg']; ?>
+<?php session_unset('msg'); }?>
 <form action="process.php?action=addCourses_admin" method="post"  name="frmListUser" id="frmListUser">
   <table width="600" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#336699" class="entryTable">
     <tr id="entryTableHeader">
@@ -81,7 +83,7 @@ $result = dbQuery($sql);
 
      <tr class="entryTable">
               <td class="label">Department</td>
-              <td class="content"><select name="department_id" id="department_id">
+              <td class="content"><select name="dept_id" id="dept_id">
               <option value="choose">--Choose a department--</option>
               <?php while($row = dbFetchAssoc($result)) {?>
               <option value="<?php echo $row['id']?>"><?php echo $row['name']?></option>
@@ -106,7 +108,7 @@ $result = dbQuery($sql);
               <option value="choose">--Choose a semester--</option>
               <option value="first">First Semester</option>
              <option value="second">Second Semester</option>
-              </select></td>
+              </select></td> 
             </tr>
     <tr class="entryTable">
               <td class="label">Number of fields</td>
@@ -133,7 +135,7 @@ $result = dbQuery($sql);
 $(document).ready(function() {
   
   $("#btnLogin").on('click', function() {
-   var dept_id = $("#num_fields").val();
+   var dept_id = $("#dept_id").val();
    var level = $("#level").val()
    var sems = $("#sems").val()
    var num = $("#num").val()
@@ -147,7 +149,8 @@ $(document).ready(function() {
       data: {
           dept_id: dept_id,
           level: level,
-          sems: sems
+          sems: sems, 
+          num: num
       },
       success: function(res) {
           $("#data").html(res);

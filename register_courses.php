@@ -48,11 +48,11 @@ $cust_id = (int)$_SESSION['user_id'];
 	// } else {
 	// 	$class = 'row2';
 	// }
-	// $i += 1;
+	// $i += 1; 
 ?>
 <?php if (isset($_SESSION['msg'])) {
-    echo $_SESSION['msg']; }?>
-<?php //session_unregister('msg'); }?>
+    echo $_SESSION['msg']; ?>
+<?php session_unset('msg'); }?>
 <h3 align="center">Register your courses</h3>
 <form action="process.php?action=addCourses" method="post"  name="frmListUser" id="frmListUser">
   <table width="600" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#336699" class="entryTable">
