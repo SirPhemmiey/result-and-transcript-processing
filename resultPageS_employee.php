@@ -46,14 +46,35 @@ require_once 'library/functions.php';
      <td class="contentArea"> 
      <!-- Content Area begings here     -->
       <?php
-	  extract($_POST);
-	  $matric =$_POST['matric'];
+	//   extract($_POST);
+	   $matric =$_POST['matric'];
 	   
-	$sql = "SELECT * FROM std WHERE matric =$matric";
-	$result = dbQuery($sql);
-	while($row = dbFetchAssoc($result)) {
+	// // $sql = "SELECT * FROM std WHERE matric =$matric";
+	// // $result = dbQuery($sql);
+	// // while($row = dbFetchAssoc($result)) {
+	// // extract($row);
+	// // 	$name =$row['name'];
+	// // 	$matric =$row['matric'];
+	// // 	$jamb =$row['jamb'];
+	// // 	$sex =$row['sex'];
+	// // 	$dob =$row['dob'];
+	// // 	$address =$row['address'];
+	// // 	$lga =$row['lga'];
+	// // 	$town =$row['town'];
+	// // 	$state =$row['state'];
+	// // 	$nat =$row['nat'];
+	// // 	$mobile=$row['mobile'];
+	// // 	$programType =$row['programType'];
+	// // 	$course =$row['dept'];
+	// // 	$religion =$row['religion'];
+	// // 	$year =$row['year'];
+	// // }
+  $sql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE std.matric = '$matric'";
+  // $sql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE std.matric = '$matric'";
+  $resultMain = dbQuery($sql);
+	while($row = dbFetchAssoc($resultMain)) {
 	extract($row);
-		$name =$row['name'];
+		$name =$row['studentName'];
 		$matric =$row['matric'];
 		$jamb =$row['jamb'];
 		$sex =$row['sex'];
@@ -65,11 +86,11 @@ require_once 'library/functions.php';
 		$nat =$row['nat'];
 		$mobile=$row['mobile'];
 		$programType =$row['programType'];
-		$course =$row['dept'];
+		$dept =$row['departmentName'];
 		$religion =$row['religion'];
-		$year =$row['year'];
+    $year =$row['year'];
+    $coursesName = $row['courseName'];
 	}
-	
 	?>
       <div id="printable">
      <table border="1" width="1190"cellpadding="0" cellspacing="0" align="center">
@@ -113,7 +134,7 @@ require_once 'library/functions.php';
     <td colspan="5">&nbsp;<?php echo $dept; ?></td>
     <td colspan="3">&nbsp;Marital Status</td>
     <td colspan="3">&nbsp;<?php echo $status;?></td>
-    <td colspan="3">&nbsp;Year Of Adminssion</td>
+    <td colspan="3">&nbsp;Year Of Admission</td>
     <td colspan="4">&nbsp; <?php echo $year; ?></td>  
   </tr>
   
@@ -276,9 +297,6 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
 	
 ?>
   
-  
-  
-  
   <tr><td colspan="21">&nbsp;</td></tr>
   <tr>
     <td>&nbsp;</td>
@@ -312,282 +330,80 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
     <td>&nbsp;GRADE</td>
     <td>&nbsp;POINT</td>
   </tr>
-  <tr>
-    <td>&nbsp;1</td>
-    <td>GSS101</td>
-    <td>&nbsp;<?php echo $gss101; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS213</td>
-    <td>&nbsp;<?php echo $cis213; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS371</td>
-    <td><?php echo $cis371; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS401</td>
-    <td>&nbsp;<?php echo $cis401; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>&nbsp;2</td>
-    <td>PHY101</td>
-    <td>&nbsp;<?php echo $phy101; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS221</td>
-    <td>&nbsp;<?php echo $cis221; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS315</td>
-    <td>&nbsp;<?php echo $cis315; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS405</td>
-    <td>&nbsp;<?php echo $cis405; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>&nbsp;3</td>
-    <td>GSS103</td>
-    <td>&nbsp;<?php echo $gss103; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS201</td>
-    <td>&nbsp;<?php echo $cis201; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS321</td>
-    <td>&nbsp;<?php echo $cis321; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS411</td>
-    <td>&nbsp;<?php echo $cis411; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>&nbsp;4</td>
-    <td>MTH131</td>
-    <td>&nbsp;<?php echo $mth131; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS263</td>
-    <td>&nbsp;<?php echo $cis263; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS310</td>
-    <td>&nbsp;<?php echo $cis310; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS415</td>
-    <td>&nbsp;<?php echo $cis415; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>&nbsp;5</td>
-    <td>CHM101</td>
-    <td>&nbsp;<?php echo $chm101; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS261</td>
-    <td>&nbsp;<?php echo $cis261; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS323</td>
-    <td>&nbsp;<?php echo $cis323; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS441</td>
-    <td>&nbsp;<?php echo $cis441; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>&nbsp;6</td>
-    <td>CIS101</td>
-    <td>&nbsp;<?php echo $cis101; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>MTH204</td>
-    <td>&nbsp;<?php echo $mth204; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS312</td>
-    <td>&nbsp;<?php echo $cis312; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS461</td>
-    <td>&nbsp;<?php echo $cis461; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>7</td>
-    <td>MTH111</td>
-    <td>&nbsp;<?php echo $mth111; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>MTH207</td>
-    <td>&nbsp;<?php echo $mth207; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS373</td>
-    <td>&nbsp;<?php echo $cis373; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS471</td>
-    <td>&nbsp;<?php echo $cis471; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>8</td>
-    <td>BIO151</td>
-    <td>&nbsp;<?php echo $bio151; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>GSS210</td>
-    <td>&nbsp;<?php echo $gss210; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS313</td>
-    <td>&nbsp;<?php echo $cis313; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS451</td>
-    <td>&nbsp;<?php echo $cis451; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>9</td>
-    <td>PHY191</td>
-    <td>&nbsp;<?php echo $phy191; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>GSS208</td>
-    <td>&nbsp;<?php echo $gss208; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS361</td>
-    <td>&nbsp;<?php echo $cis361; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS400</td>
-    <td>&nbsp;<?php echo $cis400; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>10</td>
-    <td>STA1111</td>
-    <td>&nbsp;<?php echo $sta111; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>STA201/203</td>
-    <td>&nbsp;<?php echo $sta201; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>11</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>CIS265</td>
-    <td>&nbsp;<?php echo $cis265; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>GSS211</td>
-    <td>&nbsp;<?php echo $gss211; ?></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>FALSE</td>
-  </tr>
+
+  <?php 
+  //for year one first semester
+  $yearone1stSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '100' AND courses.semester = 'first' AND std.matric = '$matric'";
+  $yearone1stResult = dbQuery($yearone1stSql);
+  
+  //for year one second semester
+  $yearone2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '100' AND courses.semester = 'second' AND std.matric = '$matric'";
+  $yearone2ndResult = dbQuery($yearone2ndSql);
+
+  //for year two first semester
+  $yeartwo1stSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '200' AND courses.semester = 'first' AND std.matric = '$matric'";
+  $yeartwo1stResult = dbQuery($yeartwo1stSql);
+
+  //for year two second semester
+  $yeartwo2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '200' AND courses.semester = 'second' AND std.matric = '$matric'";
+  $yeartwo2ndResult = dbQuery($yeartwo2ndSql);
+
+   //for year three first semester
+   $yearthree1stSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '300' AND courses.semester = 'first' AND std.matric = '$matric'";
+   $yearthree1stResult = dbQuery($yearthree1stSql);
+
+   //for year three second semester
+  $yearthree2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '300' AND courses.semester = 'second' AND std.matric = '$matric'";
+  $yearthree2ndResult = dbQuery($yearthree2ndSql);
+
+  //for year four first semester
+  $yearfour1stSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '400' AND courses.semester = 'first' AND std.matric = '$matric'";
+  $yearfour1stResult = dbQuery($yearfour1stSql);
+
+  //for year four second semester
+  $yearfour2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '400' AND courses.semester = 'second' AND std.matric = '$matric'";
+  $yearfour2ndResult = dbQuery($yearfour2ndSql);
+  ?>
+    <?php $i = 1; while($yearone1st = dbFetchAssoc($yearone1stResult)) {?>
+      <tr>
+      <td>&nbsp;<?php echo $i?></td>
+    <td><?php echo $yearone1st['courseName']?></td>
+    <td><?php echo $yearone1st['units']?></td>
+    <td><?php echo $yearone1st['grade']?></td>
+    <td>&nbsp;</td>
+    </tr>  
+    <?php $i++;} ?>
+
+    <?php $i = 1; while($yeartwo1st = dbFetchAssoc($yeartwo1stResult)) {?>
+      <tr>
+      <td>&nbsp;<?php echo $i?></td>
+    <td><?php echo $yeartwo1st['courseName']?></td>
+    <td><?php echo $yeartwo1st['units']?></td>
+    <td><?php echo $yeartwo1st['grade']?></td>
+    <td>&nbsp;</td>
+    </tr>  
+    <?php $i++;} ?>
+
+     <?php $i = 1; while($yearthree1st = dbFetchAssoc($yearthree1stResult)) {?>
+      <tr>
+      <td>&nbsp;<?php echo $i?></td>
+    <td><?php echo $yearthree1st['courseName']?></td>
+    <td><?php echo $yearthree1st['units']?></td>
+    <td><?php echo $yearthree1st['grade']?></td>
+    <td>&nbsp;</td>
+    </tr>  
+    <?php $i++;} ?>
+
+     <?php $i = 1; while($yearfour1st = dbFetchAssoc($yearfour1stResult)) {?>
+      <tr>
+      <td>&nbsp;<?php echo $i?></td>
+    <td><?php echo $yearfour1st['courseName']?></td>
+    <td><?php echo $yearfour1st['units']?></td>
+    <td><?php echo $yearfour1st['grade']?></td>
+    <td>&nbsp;</td>
+    </tr>  
+    <?php $i++;} ?>
+
   <tr>
     <td colspan="21">&nbsp;</td>
     

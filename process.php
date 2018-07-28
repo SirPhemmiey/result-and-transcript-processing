@@ -68,6 +68,10 @@ switch ($action) {
 	case 'addCust' :
 		addCust();
 	break;
+
+	case 'addGrade' :
+		addGrade();
+	break;
 	
 	case 'editStd' :
 		editStud();
@@ -652,10 +656,29 @@ function addCourses()
 		$id = $_POST['course_'.$i."_".$i];
 		$sql = "INSERT INTO students_courses VALUES (null, $id, $matric)";
 		$result = dbQuery($sql);
+		$sql2 = "INSERT INTO results (id, std_id, students_courses_id, matric, grade) VALUES (null, '', $id, $matric, '')";
+		$result2 = dbQuery($sql2);
 	}
 	$_SESSION['msg'] = 'Courses added successfully';		
 	header("Location: view.php?mod=student&view=regCourses");	
 	 exit;
+}
+
+function addGrade() {
+	$std_id = $_POST['std_id'];
+	$matric = $_POST['matric'];
+	$loop = $_POST['loop'];
+	for ($i=1; $i<=$loop; $i++) {
+		$courses_id = $_POST['courses_id_'.$i];
+		$grade = $_POST['grade_'.$i];
+		$sql = "UPDATE results SET grade = '$grade', std_id = '$std_id' WHERE  students_courses_id = '$courses_id'";
+		$result = dbQuery($sql);
+		if ($result) {
+		header("Location: view.php?mod=employee&view=vSDetails");}
+		else {
+			echo "An erro";
+		}
+	}
 }
 
 function addCourses_admin() {

@@ -19,7 +19,9 @@ $sems = $_POST['sems'];
             <?php $count=1;  while($rows = dbFetchAssoc($result)) {?>
                 <tr class="entryTable">
                 <td class="label">Course <?php echo $count?></td>
-              <td class="content"><input disabled name="course_<?php echo $count;?>_<?php echo $rows['id']; ?>" type="text" class="box" id="GSS101" value="<?php echo $rows['CoursesName']; ?>" size="15" maxlength="8" /></td>
+              <td class="content"><input disabled name="course_<?php echo $count;?>_<?php echo $rows['id']; ?>" type="text" class="box" id="GSS101" value="<?php echo $rows['CoursesName']; ?>" size="15" maxlength="8" />
+              <?php echo $rows['units']?> Units
+              </td>
               <input name="course_<?php echo $count;?>_<?php echo $rows['id']; ?>" type="hidden" value="<?php echo $rows['id']; ?>" />
               <input type="hidden" name="loop" value="<?php echo $count;?>">
             </tr>

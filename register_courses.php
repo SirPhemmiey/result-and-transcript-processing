@@ -83,7 +83,7 @@ $cust_id = (int)$_SESSION['user_id'];
               <option value="100">100</option>
              <option value="200">200</option>
              <option value="300">300</option>
-             <option value="300">400</option>
+             <option value="400">400</option>
               </select></td>
             </tr>
 
@@ -108,6 +108,10 @@ $cust_id = (int)$_SESSION['user_id'];
   <p>&nbsp;</p>
 </form>
 <p>&nbsp;</p>
+
+<script>
+alert("<?php echo "I am here";?>")
+</script>
 
 <script>
 $(document).ready(function() {

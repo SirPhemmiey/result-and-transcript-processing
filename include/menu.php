@@ -7,8 +7,8 @@ if($_SESSION['user_type'] == 'employee'){
 			<li><a href="<?php echo WEB_ROOT; ?>">Welcome,&nbsp;<?php echo ucwords($_SESSION['user_name']); ?></a></li>
 			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=query">Query Result</a></li> 
 			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=resultCheck">Check Result</a></li>
-			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=vSDetails">Enter grade points</a></li>  
-            <li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=search"> Search Project</a></li>
+			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=vSDetails">Enter Scores</a></li>  
+            <!-- <li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=search"> Search Project</a></li>	 -->
 			<li><a href="<?php echo WEB_ROOT; ?>index.php?logOut">Logout</a></li>
 		  </ul>
 	  <div class="menutitle">&nbsp;</div>	  

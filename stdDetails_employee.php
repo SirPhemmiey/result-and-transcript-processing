@@ -10,7 +10,7 @@
       <td width="100">Action</td>
     </tr>
     <?php
-	$cust_id = (int)$_SESSION['user_id'];
+	//$cust_id = (int)$_SESSION['user_id'];
 	$sql = "SELECT * 
 			FROM std
 			ORDER BY name ASC";
@@ -34,17 +34,24 @@
       <td><?php echo $programType ?></td>
       <td width="150"><?php echo $dept ?></td>
       <td width="100" align="center">
-      <select name="level" id="levSems">
-      <option value="">--Please choose--</option>
-      <option value="yearone1st">100L - First Semester</option>
-        <option value="yearone2nd">100L - Second Semester</option>
-        <option value="yeartwo1st">200L - First Semester</option>
-        <option value="yeartwo2nd">200L - Second Semester</option>
-        <option value="yearthree1st">300L - First Semester</option>
-        <option value="yearthree2nd">300L - Second Semester</option>
-      </select>
-      <input type="hidden" name="level">
-      <a href="javascript:addGrade(<?php echo $id; ?>, onefirst);">Add Grade</a>
+      <form action="view.php?mod=employee&view=addGrade" method="post">
+      <input type="hidden" name="matric" value="<?php echo $matric;?>">
+      <input type="hidden" name="std_id" value="<?php echo $id?>">
+      <select required name="level" id="level">
+              <option value="choose">--Choose</option>
+              <option value="100">100</option>
+             <option value="200">200</option>
+             <option value="300">300</option>
+             <option value="400">400</option>
+              </select> <br> <br>
+              <select required name="sems" id="sems">
+              <option value="choose">--Choose</option>
+              <option value="first">First Semester</option>
+             <option value="second">Second Semester</option>
+              </select> <br> <br>
+      
+      <input type="submit" value="Add Grade">
+      </form>
       </td>
     </tr>
     <?php

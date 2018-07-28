@@ -206,6 +206,11 @@ elseif($mod == 'employee'){
 			$pageTitle 	= 'Student Details - ';
 		break;
 
+		case 'addGrade' :
+			$content 	= 'addGrade.php';		
+			$pageTitle 	= 'Student Details - ';
+		break;
+
 	}//switch
 }//if
 elseif ($mod == 'student') {
