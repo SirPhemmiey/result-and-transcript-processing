@@ -297,80 +297,113 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
 	
 ?>
   
-  <tr><td colspan="21">&nbsp;</td></tr>
+  <tr><td colspan="25">&nbsp;</td></tr>
   <tr>
     <td>&nbsp;</td>
-    <td colspan="4" align="center">&nbsp;100 &nbsp;LEVEL</td>
-    
-    <td colspan="4" align="center">&nbsp; 200 &nbsp; LEVEL</td>
-    <td colspan="4" align="center">&nbsp;300 &nbsp;LEVEL</td>
-     <td colspan="4" align="center">&nbsp;400 &nbsp;LEVEL</td>
-    <td colspan="5" align="center">&nbsp;500 &nbsp;LEVEL</td>
+    <td colspan="5" align="center">&nbsp;100 &nbsp;LEVEL</td>
+    <td colspan="5" align="center">&nbsp; 200 &nbsp; LEVEL</td>
+    <td colspan="5" align="center">&nbsp;300 &nbsp;LEVEL</td>
+     <td colspan="5" align="center">&nbsp;400 &nbsp;LEVEL</td>
+    <!-- <td colspan="5" align="center">&nbsp;500 &nbsp;LEVEL</td> -->
   </tr>
   <tr>
     <td>&nbsp;S/N</td>
     <td>&nbsp;CODE</td>
     <td>&nbsp;UNIT</td>
+    <td>&nbsp;SCORE</td>
     <td>&nbsp;GRADE</td>
     <td>&nbsp;POINT</td>
      <td>&nbsp;CODE</td>
     <td>&nbsp;UNIT</td>
+    <td>&nbsp;SCORE</td>
     <td>&nbsp;GRADE</td>
     <td>&nbsp;POINT</td>
      <td>&nbsp;CODE</td>
     <td>&nbsp;UNIT</td>
+    <td>&nbsp;SCORE</td>
     <td>&nbsp;GRADE</td>
     <td>&nbsp;POINT</td>
      <td>&nbsp;CODE</td>
     <td>&nbsp;UNIT</td>
+    <td>&nbsp;SCORE</td>
     <td>&nbsp;GRADE</td>
     <td>&nbsp;POINT</td>
      <td>&nbsp;CODE</td>
     <td>&nbsp;UNIT</td>
+    <td>&nbsp;SCORE</td>
     <td>&nbsp;GRADE</td>
     <td>&nbsp;POINT</td>
   </tr>
 
   <?php 
   //for year one first semester
-  $yearone1stSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '100' AND courses.semester = 'first' AND std.matric = '$matric'";
+  $yearone1stSql = "SELECT *, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '100' AND courses.semester = 'first' AND std.matric = '$matric'";
   $yearone1stResult = dbQuery($yearone1stSql);
   
   //for year one second semester
-  $yearone2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '100' AND courses.semester = 'second' AND std.matric = '$matric'";
+  $yearone2ndSql = "SELECT *, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '100' AND courses.semester = 'second' AND std.matric = '$matric'";
   $yearone2ndResult = dbQuery($yearone2ndSql);
 
   //for year two first semester
-  $yeartwo1stSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '200' AND courses.semester = 'first' AND std.matric = '$matric'";
+  $yeartwo1stSql = "SELECT *, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '200' AND courses.semester = 'first' AND std.matric = '$matric'";
   $yeartwo1stResult = dbQuery($yeartwo1stSql);
 
   //for year two second semester
-  $yeartwo2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '200' AND courses.semester = 'second' AND std.matric = '$matric'";
+  $yeartwo2ndSql = "SELECT *, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '200' AND courses.semester = 'second' AND std.matric = '$matric'";
   $yeartwo2ndResult = dbQuery($yeartwo2ndSql);
 
    //for year three first semester
-   $yearthree1stSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '300' AND courses.semester = 'first' AND std.matric = '$matric'";
+   $yearthree1stSql = "SELECT *, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '300' AND courses.semester = 'first' AND std.matric = '$matric'";
    $yearthree1stResult = dbQuery($yearthree1stSql);
 
    //for year three second semester
-  $yearthree2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '300' AND courses.semester = 'second' AND std.matric = '$matric'";
+  $yearthree2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '300' AND courses.semester = 'second' AND std.matric = '$matric'";
   $yearthree2ndResult = dbQuery($yearthree2ndSql);
 
   //for year four first semester
-  $yearfour1stSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '400' AND courses.semester = 'first' AND std.matric = '$matric'";
+  $yearfour1stSql = "SELECT *, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '400' AND courses.semester = 'first' AND std.matric = '$matric'";
   $yearfour1stResult = dbQuery($yearfour1stSql);
 
   //for year four second semester
-  $yearfour2ndSql = "SELECT *, std.name AS studentName, courses.name AS courseName, department.name as departmentName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '400' AND courses.semester = 'second' AND std.matric = '$matric'";
+  $yearfour2ndSql = "SELECT *, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '400' AND courses.semester = 'second' AND std.matric = '$matric'";
   $yearfour2ndResult = dbQuery($yearfour2ndSql);
+
+  //  //for calculating total units, GP, CGPA (100)
+   $calcSql_100 = "SELECT *, SUM(courses.units) AS courseUnits, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '100' AND std.matric = '$matric'";
+   $calcResult_100 = dbQuery($calcSql_100);
+   while ($calcRow_100 = dbFetchAssoc($calcResult_100)) {
+     $tc_100 = $calcRow_100['courseUnits'];
+   }
+
+   //  //for calculating total units, GP, CGPA (200)
+   $calcSql_200 = "SELECT *, SUM(courses.units) AS courseUnits, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '200' AND std.matric = '$matric'";
+   $calcResult_200 = dbQuery($calcSql_200);
+   while ($calcRow_200 = dbFetchAssoc($calcResult_200)) {
+     $tc_200 = $calcRow_200['courseUnits'];
+   }
+
+     //  //for calculating total units, GP, CGPA (300)
+     $calcSql_300 = "SELECT *, SUM(courses.units) AS courseUnits, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '300' AND std.matric = '$matric'";
+     $calcResult_300 = dbQuery($calcSql_300);
+     while ($calcRow_300 = dbFetchAssoc($calcResult_300)) {
+       $tc_300 = $calcRow_300['courseUnits'];
+     }
+
+       //  //for calculating total units, GP, CGPA (400)
+   $calcSql_400 = "SELECT *, SUM(courses.units) AS courseUnits, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '400' AND std.matric = '$matric'";
+   $calcResult_400 = dbQuery($calcSql_400);
+   while ($calcRow_400 = dbFetchAssoc($calcResult_400)) {
+     $tc_400 = $calcRow_400['courseUnits'];
+   }
   ?>
     <?php $i = 1; while($yearone1st = dbFetchAssoc($yearone1stResult)) {?>
       <tr>
       <td>&nbsp;<?php echo $i?></td>
     <td><?php echo $yearone1st['courseName']?></td>
     <td><?php echo $yearone1st['units']?></td>
+    <td><?php echo $yearone1st['score']?></td>
     <td><?php echo $yearone1st['grade']?></td>
-    <td>&nbsp;</td>
+    <td><?php echo $yearone1st['points']?></td>
     </tr>  
     <?php $i++;} ?>
 
@@ -379,8 +412,9 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
       <td>&nbsp;<?php echo $i?></td>
     <td><?php echo $yeartwo1st['courseName']?></td>
     <td><?php echo $yeartwo1st['units']?></td>
+    <td><?php echo $yeartwo1st['score']?></td>
     <td><?php echo $yeartwo1st['grade']?></td>
-    <td>&nbsp;</td>
+    <td><?php echo $yeartwo1st['points']?></td>
     </tr>  
     <?php $i++;} ?>
 
@@ -389,7 +423,8 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
       <td>&nbsp;<?php echo $i?></td>
     <td><?php echo $yearthree1st['courseName']?></td>
     <td><?php echo $yearthree1st['units']?></td>
-    <td><?php echo $yearthree1st['grade']?></td>
+    <td><?php echo $yearthree1st['score']?></td>
+    <td>&nbsp;</td>
     <td>&nbsp;</td>
     </tr>  
     <?php $i++;} ?>
@@ -399,13 +434,14 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
       <td>&nbsp;<?php echo $i?></td>
     <td><?php echo $yearfour1st['courseName']?></td>
     <td><?php echo $yearfour1st['units']?></td>
-    <td><?php echo $yearfour1st['grade']?></td>
+    <td><?php echo $yearfour1st['score']?></td>
+    <<td>&nbsp;</td>
     <td>&nbsp;</td>
     </tr>  
     <?php $i++;} ?>
 
   <tr>
-    <td colspan="21">&nbsp;</td>
+    <td colspan="25">&nbsp;</td>
     
   </tr>
   <tr>
@@ -415,26 +451,29 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
     <td>S/N</td>
     <td>CODE</td>
     <td>UNIT</td>
+    <td>SCORE</td>
     <td>GRADE</td>
     <td>POINT</td>
      <td>CODE</td>
     <td>UNIT</td>
+    <td>SCORE</td>
     <td>GRADE</td>
     <td>POINT</td>
     <td>CODE</td>
     <td>UNIT</td>
+    <td>SCORE</td>
     <td>GRADE</td>
     <td>POINT</td>
     <td>CODE</td>
     <td>UNIT</td>
+    <td>SCORE</td>
     <td>GRADE</td>
     <td>POINT</td>
     <td>CODE</td>
     <td>UNIT</td>
+    <td>SCORE</td>
     <td>GRADE</td>
     <td>POINT</td>
-   
-   
   </tr>
    <tr>
     <td>1</td>
@@ -715,7 +754,7 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
   <tr>
     <td>&nbsp;</td>
     <td>TC</td>
-    <td><?php echo $tc1; ?>&nbsp;</td>
+    <td><?php echo $tc_100; ?>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>TC</td>

@@ -33,6 +33,8 @@
              <option value="yeartwo2nd">200L - Second Semester</option>
              <option value="yearthree1st">300L - First Semester</option>
              <option value="yearthree2nd">300L - Second Semester</option>
+             <option value="yearfour1st">400L - First Semester</option>
+             <option value="yearfour2nd">400L - Second Semester</option>
              </select>
              </td>
            </tr>

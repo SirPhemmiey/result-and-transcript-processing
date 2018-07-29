@@ -656,7 +656,7 @@ function addCourses()
 		$id = $_POST['course_'.$i."_".$i];
 		$sql = "INSERT INTO students_courses VALUES (null, $id, $matric)";
 		$result = dbQuery($sql);
-		$sql2 = "INSERT INTO results (id, std_id, students_courses_id, matric, grade) VALUES (null, '', $id, $matric, '')";
+		$sql2 = "INSERT INTO results (id, std_id, students_courses_id, matric, score, grade, points) VALUES (null, '', $id, $matric, '', '', '')";
 		$result2 = dbQuery($sql2);
 	}
 	$_SESSION['msg'] = 'Courses added successfully';		
@@ -668,10 +668,31 @@ function addGrade() {
 	$std_id = $_POST['std_id'];
 	$matric = $_POST['matric'];
 	$loop = $_POST['loop'];
+	$pointForA = 4;
+	$pointForB = 3;
+	$pointForC = 2;
+	$pointForD = 1;
 	for ($i=1; $i<=$loop; $i++) {
 		$courses_id = $_POST['courses_id_'.$i];
-		$grade = $_POST['grade_'.$i];
-		$sql = "UPDATE results SET grade = '$grade', std_id = '$std_id' WHERE  students_courses_id = '$courses_id'";
+		$score = $_POST['score_'.$i];
+		$units = $_POST['units_'.$i];
+		if ($score >= 70) {
+			$grade = 'A';
+			$points = $units*$pointForA;
+		}
+		else if ($score >= 60) {
+			$grade = 'B';
+			$points = $units*$pointForB;
+		}
+		else if ($score >= 50) {
+			$grade = 'C';
+			$points = $units*$pointForC;
+		}
+		else {
+			$grade = 'D';
+			$points = $units*$pointForD;
+		}
+		$sql = "UPDATE results SET score = '$score', grade = '$grade', points = '$points', std_id = '$std_id' WHERE  students_courses_id = '$courses_id'";
 		$result = dbQuery($sql);
 		if ($result) {
 		header("Location: view.php?mod=employee&view=vSDetails");}
