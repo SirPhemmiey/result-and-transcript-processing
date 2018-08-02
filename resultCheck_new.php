@@ -62,7 +62,7 @@
                    $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee.php");
                    break;
                    case 'yearone1st':
-                   $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee_yearone.php");
+                   $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee_indi.php");
                    break;
                }
             })

@@ -657,8 +657,8 @@ function addCourses()
 		$id = $_POST['course_'.$i];
 		$sql = "INSERT INTO students_courses VALUES (null, $id, $matric)";
 		$result = dbQuery($sql);
-		$sql2 = "INSERT INTO results (id, std_id, students_courses_id, matric, score, grade, points) VALUES (null, '', $id, $matric, '', '', '')";
-		$result2 = dbQuery($sql2);
+		//$sql2 = "INSERT INTO results (id, std_id, students_courses_id, matric, score, grade, points) VALUES (null, '', $id, $matric, '', '', '')";
+		//$result2 = dbQuery($sql2);
 	}
 	$_SESSION['msg'] = 'Courses added successfully';		
 	header("Location: view.php?mod=student&view=regCourses");	
@@ -695,11 +695,11 @@ function addGrade() {
 			$points = $units*$pointForD;
 		}
 		// $sql = "UPDATE results SET score = '$score', grade = '$grade', points = '$points', std_id = '$std_id' WHERE  students_courses_id = '$courses_id' AND matric = '$matric'";
-		$sql = "UPDATE results R JOIN students_courses S ON (R.students_courses_id = S.id) SET score = '$score', grade = '$grade', points = '$points', std_id = '$std_id' WHERE  S.id = '$courses_id' ";
+		$sql = "INSERT INTO results (id, std_id, students_courses_id, matric, score, grade, points) VALUES (null, '$std_id', '$courses_id', '$matric', '$score', '$grade', '$points')";
 		$result = dbQuery($sql);
 		if (mysqli_num_rows($result) > 0) {
-			echo "Success"; }
-		//header("Location: view.php?mod=employee&view=vSDetails");}
+			//echo "Success"; }
+		header("Location: view.php?mod=employee&view=vSDetails");}
 		else {
 			echo "An erro";
 		}
