@@ -9,7 +9,7 @@ $level = $_POST['level'];
 $sems =$_POST['sems'];
 
 //get courses the student has registered
-$sql = "SELECT *, courses.units AS courseUnits, students_courses.id AS stdC_id, courses.id AS c_id FROM students_courses JOIN courses ON (students_courses.id = courses.id) WHERE courses.level = '$level' AND courses.semester = '$sems' AND matric = '$matric'";
+$sql = "SELECT *, courses.units AS courseUnits, students_courses.id AS stdC_id, courses.id AS c_id FROM students_courses JOIN courses ON (students_courses.course_id = courses.id) WHERE courses.level = '$level' AND courses.semester = '$sems' AND matric = '$matric'";
 $result = dbQuery($sql);
 $sql2 = "SELECT name FROM std WHERE matric = '$matric'";
 $result2 = dbQuery($sql2);
@@ -19,6 +19,7 @@ while($infoRow = dbFetchAssoc($result2)) {
 ?>
             <center>
             <h2>Course Scores for <?php echo ucwords($name)?></h2>
+            <h3><?php echo $level?>L - <?php echo ucfirst($sems)?> Semester</h3>
             <form action="process.php?action=addGrade" method="post">
           <table width="100%" border="0" cellpadding="2" cellspacing="1" class="text entryTable">
             <tr align="center">
@@ -34,9 +35,9 @@ while($infoRow = dbFetchAssoc($result2)) {
               <input name="courses_id_<?php echo $count;?>" type="hidden" class="box" value="<?php echo $rows['stdC_id']; ?>"/>
               <input name="score_<?php echo $count;?>" type="number" class="box" id="" placeholder="Score"/>
               </td>
-              <input type="hidden" name="loop" value="<?php echo $count;?>">
             </tr>
                 <?php  $count++; }?>
+                <input type="text" name="loop" value="<?php echo $count;?>">
             
             <tr>
               <td width="200">&nbsp;</td>

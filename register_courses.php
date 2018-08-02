@@ -110,10 +110,6 @@ $cust_id = (int)$_SESSION['user_id'];
 <p>&nbsp;</p>
 
 <script>
-alert("<?php echo "I am here";?>")
-</script>
-
-<script>
 $(document).ready(function() {
   
     $("#btnLogin").on('click', function() {

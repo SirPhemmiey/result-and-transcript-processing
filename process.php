@@ -652,8 +652,9 @@ function addCourses()
 {	
 	 $loop = $_POST['loop'];
 	 $matric = $_SESSION['matric'];
+	 //print_r($_POST); exit();
 	for ($i=1; $i<=$loop; $i++) {
-		$id = $_POST['course_'.$i."_".$i];
+		$id = $_POST['course_'.$i];
 		$sql = "INSERT INTO students_courses VALUES (null, $id, $matric)";
 		$result = dbQuery($sql);
 		$sql2 = "INSERT INTO results (id, std_id, students_courses_id, matric, score, grade, points) VALUES (null, '', $id, $matric, '', '', '')";
@@ -672,7 +673,8 @@ function addGrade() {
 	$pointForB = 3;
 	$pointForC = 2;
 	$pointForD = 1;
-	for ($i=1; $i<=$loop; $i++) {
+	//print_r($_POST); exit();
+	for ($i=1; $i<$loop; $i++) {
 		$courses_id = $_POST['courses_id_'.$i];
 		$score = $_POST['score_'.$i];
 		$units = $_POST['units_'.$i];
@@ -692,10 +694,12 @@ function addGrade() {
 			$grade = 'D';
 			$points = $units*$pointForD;
 		}
-		$sql = "UPDATE results SET score = '$score', grade = '$grade', points = '$points', std_id = '$std_id' WHERE  students_courses_id = '$courses_id'";
+		// $sql = "UPDATE results SET score = '$score', grade = '$grade', points = '$points', std_id = '$std_id' WHERE  students_courses_id = '$courses_id' AND matric = '$matric'";
+		$sql = "UPDATE results R JOIN students_courses S ON (R.students_courses_id = S.id) SET score = '$score', grade = '$grade', points = '$points', std_id = '$std_id' WHERE  S.id = '$courses_id' ";
 		$result = dbQuery($sql);
-		if ($result) {
-		header("Location: view.php?mod=employee&view=vSDetails");}
+		if (mysqli_num_rows($result) > 0) {
+			echo "Success"; }
+		//header("Location: view.php?mod=employee&view=vSDetails");}
 		else {
 			echo "An erro";
 		}
