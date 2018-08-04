@@ -78,7 +78,8 @@ $cust_id = (int)$_SESSION['user_id'];
 
             <tr class="entryTable">
               <td class="label">Level</td>
-              <td class="content"><select name="level" id="level">
+              <td class="content">
+              <select name="level" id="level">
               <option value="choose">--Choose a level--</option>
               <option value="100">100</option>
              <option value="200">200</option>
@@ -89,7 +90,8 @@ $cust_id = (int)$_SESSION['user_id'];
 
               <tr class="entryTable">
               <td class="label">Semester</td>
-              <td class="content"><select name="sems" id="sems">
+              <td class="content">
+              <select name="sems" id="sems">
               <option value="choose">--Choose a semester--</option>
               <option value="first">First Semester</option>
              <option value="second">Second Semester</option>

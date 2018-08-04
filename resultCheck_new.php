@@ -20,24 +20,45 @@
              <td><input required name="matric" type="text" class="box" id="txtUserName" size="30" maxlength="40"></td>
            </tr>
 
-           <tr>
-             <td align="right">Level /Semester.</td>
+            <tr>
+             <td align="right">Level/Semester.</td>
              <td align="center">:</td>
              <td>
-             <select name="semsYear" required id="semsYear">
-             <option value="choose">--Please Choose--</option>
-             <option value="all">All</option>
-             <option value="yearone1st">100L - First Semester</option>
-             <option value="yearone2nd">100L - Second Semester</option>
-             <option value="yeartwo1st">200L - First Semester</option>
-             <option value="yeartwo2nd">200L - Second Semester</option>
-             <option value="yearthree1st">300L - First Semester</option>
-             <option value="yearthree2nd">300L - Second Semester</option>
-             <option value="yearfour1st">400L - First Semester</option>
-             <option value="yearfour2nd">400L - Second Semester</option>
-             </select>
+             <select name="" id="semsYear">
+              <option value="choose">--Choose--</option>
+              <option value="all">All</option>
+              <option value="specific">Specific</option>
+              </select>
              </td>
            </tr>
+
+        
+         <tr class="others" style="display:none">
+             <td align="right">Level.</td>
+             <td align="center">:</td>
+             <td>
+             <select name="level" id="level">
+              <option value="choose">--Choose a level--</option>
+              <option value="100">100</option>
+             <option value="200">200</option>
+             <option value="300">300</option>
+             <option value="400">400</option>
+              </select>
+             </td>
+           </tr>
+
+            <tr class="others" style="display:none">
+             <td align="right">Semester.</td>
+             <td align="center">:</td>
+             <td>
+             <select name="sems" id="sems">
+              <option value="choose">--Choose a semester--</option>
+              <option value="first">First Semester</option>
+             <option value="second">Second Semester</option>
+              </select>
+             </td>
+           </tr>
+       
           
            <tr>
              <td colspan="2">&nbsp;</td>
@@ -57,14 +78,22 @@
         $(document).ready(function() {
             $("#semsYear").on('change', function() {
                 let value = $(this).val();
-               switch(value) {
-                   case 'all':
-                   $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee.php");
-                   break;
-                   case 'yearone1st':
-                   $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee_indi.php");
-                   break;
-               }
+                if (value == 'all') {
+                  $(".others").hide();
+                  $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee.php");
+                }
+                else {
+                  $(".others").show();
+                  $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee_indi.php");
+                }
+              //  switch(value) {
+              //      case 'all':
+              //      $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee.php");
+              //      break;
+              //      default:
+              //      $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee_indi.php");
+              //      break;
+              //  }
             })
         })
         </script>
