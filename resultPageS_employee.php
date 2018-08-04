@@ -396,23 +396,32 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
      $tc_400 = $calcRow_400['courseUnits'];
    }
   ?>
-   <tr>
+ 
+    <td>
     <?php $i = 1; while($yearone1st = dbFetchAssoc($yearone1stResult)) {?>
+      <tr>
       <td>&nbsp;<?php echo $i?></td>
     <td><?php echo $yearone1st['courseName']?></td>
     <td><?php echo $yearone1st['units']?></td>
     <td><?php echo $yearone1st['score']?></td>
     <td><?php echo $yearone1st['grade']?></td>
     <td><?php echo $yearone1st['points']?></td>
+    </tr> 
     <?php $i++;} ?>
+    </td>
+
+     <td>
      <?php while($yeartwo1st = dbFetchAssoc($yearone2ndResult)) {?>
-    <td><?php echo $yeartwo1st['courseName']?></td>
+   <tr>
+   <td><?php echo $yeartwo1st['courseName']?></td>
     <td><?php echo $yeartwo1st['units']?></td>
     <td><?php echo $yeartwo1st['score']?></td>
     <td><?php echo $yeartwo1st['grade']?></td>
     <td><?php echo $yeartwo1st['points']?></td>
+   </tr>
     <?php } ?>
-    </tr>  
+    </td>
+     
    
 
    

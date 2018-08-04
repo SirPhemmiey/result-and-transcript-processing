@@ -48,7 +48,7 @@ if($_SESSION['user_type'] == 'employee'){
 		  <ul>
 			<li><a href="<?php echo WEB_ROOT; ?>">Welcome,&nbsp;<?php echo ucwords($_SESSION['user_name']); ?></a></li>
 			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=student&view=regCourses">Register Courses</a></li>
-			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=student&view=vCourses">Courses</a></li>
+			<!-- <li><a href="<?php echo WEB_ROOT; ?>view.php?mod=student&view=vCourses">Courses</a></li> -->
             <li><a href="<?php echo WEB_ROOT; ?>view.php?mod=student&view=checkResult">Check Result</a></li>
 			<li><a href="<?php echo WEB_ROOT; ?>index.php?logOut">Logout</a></li>
 		  </ul>
