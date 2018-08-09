@@ -37,7 +37,7 @@ while($infoRow = dbFetchAssoc($result2)) {
               </td>
             </tr>
                 <?php  $count++; }?>
-                <input type="text" name="loop" value="<?php echo $count;?>">
+                <input type="hidden" name="loop" value="<?php echo $count;?>">
             
             <tr>
               <td width="200">&nbsp;</td>

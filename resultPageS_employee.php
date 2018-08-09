@@ -397,7 +397,7 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
    }
   ?>
  
-    <td>
+  
     <?php $i = 1; while($yearone1st = dbFetchAssoc($yearone1stResult)) {?>
       <tr>
       <td>&nbsp;<?php echo $i?></td>
@@ -408,19 +408,39 @@ $sql ="SELECT * FROM yearthree1st WHERE matric =$matric";
     <td><?php echo $yearone1st['points']?></td>
     </tr> 
     <?php $i++;} ?>
-    </td>
+  
 
-     <td>
-     <?php while($yeartwo1st = dbFetchAssoc($yearone2ndResult)) {?>
+   
+     <?php $i = 1; while($yearone2nd = dbFetchAssoc($yearone2ndResult)) {?>
    <tr>
-   <td><?php echo $yeartwo1st['courseName']?></td>
+   <td>&nbsp;<?php echo $i?></td>
+   <td><?php echo $yearone2nd['courseName']?></td>
+    <td><?php echo $yearone2nd['units']?></td>
+    <td><?php echo $yearone2nd['score']?></td>
+    <td><?php echo $yearone2nd['grade']?></td>
+    <td><?php echo $yearone2nd['points']?></td>
+   </tr>
+    <?php $i++;} ?>
+   
+    <tr>
+    <td align="center" colspan="21">&nbsp;200 LEVEL</td>
+  </tr>
+    
+    <?php $i = 1; while($yeartwo1st = dbFetchAssoc($yeartwo1stResult)) {?>
+      <tr>
+      <td>&nbsp;<?php echo $i?></td>
+    <td><?php echo $yeartwo1st['courseName']?></td>
     <td><?php echo $yeartwo1st['units']?></td>
     <td><?php echo $yeartwo1st['score']?></td>
     <td><?php echo $yeartwo1st['grade']?></td>
     <td><?php echo $yeartwo1st['points']?></td>
-   </tr>
-    <?php } ?>
-    </td>
+    </tr> 
+    <?php $i++;} ?>
+   
+
+
+
+    
      
    
 

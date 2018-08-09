@@ -5,7 +5,7 @@ if($_SESSION['user_type'] == 'employee'){
 	  <div class="menutitle">Exam Officer Menu </div>
 		  <ul>
 			<li><a href="<?php echo WEB_ROOT; ?>">Welcome,&nbsp;<?php echo ucwords($_SESSION['user_name']); ?></a></li>
-			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=query">Query Result</a></li> 
+			<!-- <li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=query">Query Result</a></li>  -->
 			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=resultCheck">Check Result</a></li>
 			<li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=vSDetails">Enter Scores</a></li>  
             <!-- <li><a href="<?php echo WEB_ROOT; ?>view.php?mod=employee&view=search"> Search Project</a></li>	 -->

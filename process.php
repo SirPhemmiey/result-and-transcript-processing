@@ -693,11 +693,11 @@ function addGrade() {
 		else {
 			$grade = 'D';
 			$points = $units*$pointForD;
-		}
+		}//results stops at id = 92
 		// $sql = "UPDATE results SET score = '$score', grade = '$grade', points = '$points', std_id = '$std_id' WHERE  students_courses_id = '$courses_id' AND matric = '$matric'";
 		$sql = "INSERT INTO results (id, std_id, students_courses_id, matric, score, grade, points) VALUES (null, '$std_id', '$courses_id', '$matric', '$score', '$grade', '$points')";
 		$result = dbQuery($sql);
-		if (mysqli_num_rows($result) > 0) {
+		if (($result)) {
 			//echo "Success"; }
 		header("Location: view.php?mod=employee&view=vSDetails");}
 		else {
