@@ -4,7 +4,7 @@
 // $id =$_GET['Id'];
 // $sql = "SELECT matric FROM std WHERE id =$id";
 // $result = dbQuery($sql);
-// 	while($row = dbFetchAssoc($result)) 
+// 	while($row = dbFetchAssoc($result))
 // 	{extract($row); $matric =$row['matric'];}
 // $check = "SELECT * FROM yearOne1st WHERE std_id =$id";
 // $results = dbQuery($check);
@@ -15,8 +15,8 @@
 // 				$output = ' FORM HAVE BEEN SUBMITTED, CHECK IF DETAILS IS CORRECT';
 // 				$checks = "SELECT * FROM yearOne1st WHERE std_id =$id";
 // 				$result = dbQuery($checks);
-// 			while($row = dbFetchAssoc($result)) 
-// 			{	extract($row);  
+// 			while($row = dbFetchAssoc($result))
+// 			{	extract($row);
 // 				 $gss101 =$row['gss101'];
 // 				$phy101 =$row['phy101'];
 // 				$gss103 =$row['gss103'];
@@ -28,15 +28,15 @@
 // 				$phy191 =$row['phy191'];
 // 				$sta111 =$row['sta111'];
 // 			}
-			
+
 // 			}
 // 			else
 // 			{$type = 'submits';
 // 			$output = ' Fill Details ';			}
-			
-			
+
+
 $cust_id = (int)$_SESSION['user_id'];
-	$sql = "SELECT * 
+	$sql = "SELECT *
 			FROM department
 			ORDER BY name ASC";
 	$result = dbQuery($sql);
@@ -48,11 +48,11 @@ $cust_id = (int)$_SESSION['user_id'];
 	// } else {
 	// 	$class = 'row2';
 	// }
-	// $i += 1; 
+	// $i += 1;
 ?>
 <?php if (isset($_SESSION['msg'])) {
-    echo $_SESSION['msg']; ?>
-<?php session_unset('msg'); }?>
+    echo $_SESSION['msg']; } ?>
+<?php //session_unset('msg'); }?>
 <h3 align="center">Register your courses</h3>
 <form action="process.php?action=addCourses" method="post"  name="frmListUser" id="frmListUser">
   <table width="600" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#336699" class="entryTable">
@@ -113,7 +113,7 @@ $cust_id = (int)$_SESSION['user_id'];
 
 <script>
 $(document).ready(function() {
-  
+
     $("#btnLogin").on('click', function() {
      var dept_id = $("#department_id").val();
      var level = $("#level").val()

@@ -43,19 +43,19 @@ function MM_validateForm() { //v4.0
             </tr>
             <tr class="entryTable">
               <td class="label">&nbsp;Matric No</td>
-              <td class="content"><input name="matric" type="text" class="box" id="Matric" value="" size="15" maxlength="8" /></td>
+              <td class="content"><input name="matric" type="text" class="box" id="Matric" value="" size="15" maxlength="15" /></td>
             </tr>
             <tr class="entryTable">
               <td class="label">&nbsp;Jamb No /Reg No:</td>
-              <td class="content"><input name="jamb" type="text" class="box" id="Jamb" value="" size="15" maxlength="8" /></td>
+              <td class="content"><input name="jamb" type="text" class="box" id="Jamb" value="" size="15" maxlength="15" /></td>
             </tr>
             <tr class="entryTable">
               <td class="label">&nbsp;Email:</td>
-              <td class="content"><input name="email" type="email" class="box" id="email" value="" size="15" maxlength="8" /></td>
+              <td class="content"><input name="email" type="email" class="box" id="email" value="" size="15" maxlength="15" /></td>
             </tr>
             <tr class="entryTable">
               <td class="label">&nbsp;Password:</td>
-              <td class="content"><input name="password" type="password" class="box" id="email" value="" size="15" maxlength="8" /></td>
+              <td class="content"><input name="password" type="password" class="box" id="email" value="" size="15" maxlength="15" /></td>
             </tr>
            
             <tr class="entryTable">
@@ -117,6 +117,7 @@ function MM_validateForm() { //v4.0
               				<select name="dept" type="text" class="box" id="Dept">
                       
                             <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
                             </select>
               </td>
 			<tr class="entryTable">

@@ -9,7 +9,7 @@ session_start();
 $dbHost = 'localhost';
 $dbUser = 'root';
 $dbPass = '';
-$dbName = 'project';
+$dbName = 'project2';
 
 
 $thisFile = str_replace('\\', '/', __FILE__);

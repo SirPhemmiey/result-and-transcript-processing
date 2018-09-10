@@ -20,20 +20,7 @@
              <td><input required name="matric" type="text" class="box" id="txtUserName" size="30" maxlength="40"></td>
            </tr>
 
-            <tr>
-             <td align="right">Level/Semester.</td>
-             <td align="center">:</td>
-             <td>
-             <select name="" id="semsYear">
-              <option value="choose">--Choose--</option>
-              <option value="all">All</option>
-              <option value="specific">Specific</option>
-              </select>
-             </td>
-           </tr>
-
-        
-         <tr class="others" style="display:none">
+         <tr class="others">
              <td align="right">Level.</td>
              <td align="center">:</td>
              <td>
@@ -47,7 +34,7 @@
              </td>
            </tr>
 
-            <tr class="others" style="display:none">
+            <tr class="others">
              <td align="right">Semester.</td>
              <td align="center">:</td>
              <td>
@@ -55,6 +42,7 @@
               <option value="choose">--Choose a semester--</option>
               <option value="first">First Semester</option>
              <option value="second">Second Semester</option>
+             <option value="all">All Semester</option>
               </select>
              </td>
            </tr>
@@ -76,10 +64,10 @@
         </tr>
         <script>
         $(document).ready(function() {
-            $("#semsYear").on('change', function() {
+            $("#sems").on('change', function() {
                 let value = $(this).val();
                 if (value == 'all') {
-                  $(".others").hide();
+                  //$(".others").hide();
                   $("#frmLogin").attr('action', "<?php echo WEB_ROOT; ?>resultPageS_employee.php");
                 }
                 else {

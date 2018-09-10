@@ -25,15 +25,18 @@ function MM_validateForm() { //v4.0
 }
 //-->
 </script>
-<?php 
+<?php
 require './library/database.php';
-$eid = (int)$_GET['eId']; 
+$eid = (int)$_GET['eId'];
 $sql= "SELECT * FROM tbl_engineer WHERE eid = $eid";
 $result = dbQuery($sql);
 while($data = dbFetchAssoc($result)){
 extract($data);
 ?>
 <h3>Edit Staff Details - Admin View</h3>
+<?php if (isset($_SESSION['msg'])) {
+    echo $_SESSION['msg']; }?>
+<?php //session_unset('msg'); }?>
 <form action="process.php?action=editEngg" method="post"  name="frmListUser" id="frmListUser">
   <table width="600" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#336699" class="entryTable">
     <tr id="entryTableHeader">

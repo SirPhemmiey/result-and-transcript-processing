@@ -30,7 +30,7 @@ function MM_validateForm() { //v4.0
 // $id =$_GET['Id'];
 // $sql = "SELECT matric FROM std WHERE id =$id";
 // $result = dbQuery($sql);
-// 	while($row = dbFetchAssoc($result)) 
+// 	while($row = dbFetchAssoc($result))
 // 	{extract($row); $matric =$row['matric'];}
 // $check = "SELECT * FROM yeartwo1st WHERE std_id =$id";
 // $results = dbQuery($check);
@@ -41,8 +41,8 @@ function MM_validateForm() { //v4.0
 // 				$output = ' FORM HAVE BEEN SUBMITTED, CHECK IF DETAILS IS CORRECT';
 // 				$checks = "SELECT * FROM yeartwo1st WHERE std_id =$id";
 // 				$result = dbQuery($checks);
-// 			while($row = dbFetchAssoc($result)) 
-// 			{	extract($row);  
+// 			while($row = dbFetchAssoc($result))
+// 			{	extract($row);
 // 				 $cis213 =$row['cis213'];
 // 				 $cis221 =$row['cis221'];
 // 				 $cis201 =$row['cis201'];
@@ -55,26 +55,26 @@ function MM_validateForm() { //v4.0
 // 				 $sta201 =$row['sta201'];
 // 				 $cis265 =$row['cis265'];
 // 				 $gss211 =$row['gss211'];
-				 
-				
+
+
 // 			}
-			
+
 // 			}
 // 			else
 // 			{$type = 'submits';
 // 			$output = ' Fill Details ';			}
-			
+
 // 			global $cis213,$cis221,$cis201,$cis263,$cis261,$mth204,$mth207,$gss210,$gss208,$sta201,$cis265,$gss211;
 
-$sql = "SELECT * 
+$sql = "SELECT *
 FROM department
 ORDER BY name ASC";
 $result = dbQuery($sql);
 
 ?>
 <?php if (isset($_SESSION['msg'])) {
-    echo $_SESSION['msg']; ?>
-<?php session_unset('msg'); }?>
+    echo $_SESSION['msg']; }?>
+<?php //session_unset('msg'); }?>
 <form action="process.php?action=addCourses_admin" method="post"  name="frmListUser" id="frmListUser">
   <table width="600" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#336699" class="entryTable">
     <tr id="entryTableHeader">
@@ -90,7 +90,7 @@ $result = dbQuery($sql);
               <?php }?>
               </select></td>
             </tr>
-            
+
             <tr class="entryTable">
               <td class="label">Level</td>
               <td class="content"><select name="level" id="level">
@@ -108,20 +108,20 @@ $result = dbQuery($sql);
               <option value="choose">--Choose a semester--</option>
               <option value="first">First Semester</option>
              <option value="second">Second Semester</option>
-              </select></td> 
+              </select></td>
             </tr>
     <tr class="entryTable">
               <td class="label">Number of fields</td>
               <td class="content"><input name="num" id="num" type="text" class="box" placeholder="Number of courses"/></td>
         </tr>
-     
+
         <tr>
               <td>&nbsp;</td>
               <td><input name="btnLogin" type="button" id="btnLogin" value="LOAD FIELDS">
              </td>
             </tr>
         </table></td>
-           
+
     </tr>
   </table>
   <div id="data"></div>
@@ -133,7 +133,7 @@ $result = dbQuery($sql);
 
 <script>
 $(document).ready(function() {
-  
+
   $("#btnLogin").on('click', function() {
    var dept_id = $("#dept_id").val();
    var level = $("#level").val()
@@ -149,7 +149,7 @@ $(document).ready(function() {
       data: {
           dept_id: dept_id,
           level: level,
-          sems: sems, 
+          sems: sems,
           num: num
       },
       success: function(res) {

@@ -40,7 +40,7 @@ function resultCheck(){
 <br/>
 <table width="900" border="0" align="center" cellpadding="0" cellspacing="1" class="graybox">
  <tr> 
-  <td><img src="images/complains.jpg" width="900" height="120"></td>
+  <td><img src="images/1.png" width="900" height="120"></td>
  </tr>
  <tr> 
   <td valign="top"> <table width="100%" border="0" cellspacing="0" cellpadding="20">

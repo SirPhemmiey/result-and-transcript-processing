@@ -4,9 +4,9 @@ require_once 'library/functions.php';
 
 checkUser();
 
-$content = 'main.php'; 
+$content = 'History.php'; 
 
-$pageTitle = 'Project Allocation System';
+$pageTitle = 'Result and Transcript Processing System';
 //$script = array();
 
 require_once 'include/template.php';

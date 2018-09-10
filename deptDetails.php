@@ -1,5 +1,8 @@
 <h3>Department Details - Admin View</h3>
 <p>To add New Department <a href="view.php?mod=admin&view=addDept">Click Here</a> </p>
+<?php if (isset($_SESSION['msg'])) {
+    echo $_SESSION['msg']; }?>
+<?php //session_unset('msg'); }?>
 <form action="" method="post"  name="frmListUser" id="frmListUser">
   <table width="680" border="0" align="center" cellpadding="2" cellspacing="1" class="text">
     <tr align="center" id="listTableHeader">
@@ -8,7 +11,7 @@
     </tr>
     <?php
 	$cust_id = (int)$_SESSION['user_id'];
-	$sql = "SELECT * 
+	$sql = "SELECT *
 			FROM department
 			ORDER BY name ASC";
 	$result = dbQuery($sql);
@@ -22,6 +25,7 @@
 	}
 	$i += 1;
 	?>
+
     <tr class="<?php echo $class; ?>" style="height:25px;">
       <td>&nbsp;<?php echo $name; ?></td>
       <td width="207" align="center"><a href="javascript:editDeptDetail(<?php echo $id; ?>);">Edit</a> / <a href="javascript:deleteDept(<?php echo $id; ?>);">Delete</a> </td>

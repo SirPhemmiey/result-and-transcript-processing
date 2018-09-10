@@ -11,7 +11,7 @@ function checkUser()
 		header('Location: ' . WEB_ROOT . '../processing/login.php');
 		exit;
 	}
-	
+
 	// the user want to logout
 	if (isset($_GET['logOut'])) {
 		doLogout();
@@ -19,13 +19,13 @@ function checkUser()
 }
 
 /*
-	
+
 */
 function doLogin()
 {
 	// if we found an error save the error message in this variable
 	$errorMessage = '';
-	
+
 	$userName = $_POST['txtUserName'];
 	$password = $_POST['txtPassword'];
 	$uType    = $_POST['utype'];
@@ -35,7 +35,7 @@ function doLogin()
 	} else if ($password == '') {
 		$errorMessage = 'You must enter the password';
 	} else {
-		
+
 		//check if user is customer
 		if($uType == 'customer')
 		{
@@ -50,7 +50,7 @@ function doLogin()
 				$_SESSION['user_type'] = $uType;
 			}//if
 			header('Location: '.WEB_ROOT.'../processing/index.php');
-			exit;		
+			exit;
 		}//if
 		elseif($uType == 'student')
 		{
@@ -66,7 +66,7 @@ function doLogin()
 				$_SESSION['matric'] = $row['matric'];
 			}//if
 			header('Location: '.WEB_ROOT.'../processing/index_student.php');
-			exit;		
+			exit;
 		}
 		elseif($uType == 'employee')
 		{
@@ -81,7 +81,7 @@ function doLogin()
 				$_SESSION['user_type'] = $uType;
 			}//if
 			header('Location: '.WEB_ROOT.'../processing/index_staff.php');
-			exit;		
+			exit;
 		}
 		elseif($uType == 'admin'){
 			//$_SESSION['user_id'] = $row['sid'];
@@ -98,8 +98,8 @@ function doLogin()
 		}//if Admin
 		else {
 			$errorMessage = 'Username or Password is not Valid. Please try again.';
-		}//else		
-			
+		}//else
+
 	}//else
 	return $errorMessage;
 }
@@ -111,15 +111,15 @@ function doRegister()
 {
 	// if we found an error save the error message in this variable
 	$errorMessage = '';
-	
+
 	$userName = $_POST['txtUserName'];
 	$password = $_POST['txtPassword'];
 	$utype = $_POST['utype'];
 	$txtAdd = $_POST['txtAdd'];
 	$txtMob = $_POST['txtMob'];
 	$txtEmail = $_POST['Email'];
-	
-	
+
+
 	// first, make sure the username & password are not empty
 	if ($userName == '') {
 		$errorMessage = 'You must enter your username';
@@ -129,43 +129,43 @@ function doRegister()
 		$errorMessage = 'You must enter the Address';
 	}else if ($txtMob == '') {
 		$errorMessage = 'You must enter the Mobile No.';
-	}else if (strlen($txtMob) < 10) { 
+	}else if (strlen($txtMob) < 10) {
 		$errorMessage = 'Mobile No. must contain 10 digits';
 	}else if ($txtEmail == '') {
 		$errorMessage = 'You must enter the E-mail.';
 	}else {
 		// check the database and see if the username and password combo do match
 		if($utype == 'customer'){
-			
+
 			$sql = "SELECT cname
 					FROM tbl_customer
 					WHERE cname = '$userName'";
 			$result = dbQuery($sql);
 			if (dbNumRows($result) == 1) {
-				$errorMessage = 'Username already taken. Choose another one';	
-			} else {			
+				$errorMessage = 'Username already taken. Choose another one';
+			} else {
 				$sql   = "INSERT INTO tbl_customer (cname, cpass, address, email, c_mobile, date_time)
 						  VALUES ('$userName', '$password', '$txtAdd','$txtEmail','$txtMob',NOW())";
 				dbQuery($sql);
 				$errorMessage = 'Registration is Successful. You can Login Now.';
-				header('Location: login.php');	
+				header('Location: login.php');
 			}
-		}//if 		
+		}//if
 		else {
 			$sql = "SELECT sname
 					FROM tbl_supplier
 					WHERE sname = '$userName'";
 			$result = dbQuery($sql);
 			if (dbNumRows($result) == 1) {
-				$errorMessage = 'Username already taken. Choose another one';	
-			} else {			
+				$errorMessage = 'Username already taken. Choose another one';
+			} else {
 				$sql   = "INSERT INTO tbl_supplier (sname, spass, address, email, s_mobile, date_time)
 						  VALUES ('$userName', '$password', '$txtAdd','$txtEmail','$txtMob',NOW())";
 				dbQuery($sql);
 				$errorMessage = 'Registration is Successful. You can Login Now.';
-				header('Location: login.php');	
+				header('Location: login.php');
 			}
-		}//else		
+		}//else
 	}//else
 	return $errorMessage;
 }
@@ -187,7 +187,7 @@ function doLogout()
 		unset($_SESSION['user_type']);
 		//session_unregister('user_type');
 	}
-		
+
 	header('Location: login.php');
 	exit;
 }
@@ -203,40 +203,40 @@ function buildCategoryOptions($catId = 0)
 			FROM tbl_category
 			ORDER BY cat_id";
 	$result = dbQuery($sql) or die('Cannot get Product. ' . mysql_error());
-	
+
 	$categories = array();
 	while($row = dbFetchArray($result)) {
 		list($id, $parentId, $name) = $row;
-		
+
 		if ($parentId == 0) {
 			// we create a new array for each top level categories
 			$categories[$id] = array('name' => $name, 'children' => array());
 		} else {
 			// the child categories are put int the parent category's array
-			$categories[$parentId]['children'][] = array('id' => $id, 'name' => $name);	
+			$categories[$parentId]['children'][] = array('id' => $id, 'name' => $name);
 		}
-	}	
-	
+	}
+
 	// build combo box options
 	$list = '';
 	foreach ($categories as $key => $value) {
 		$name     = $value['name'];
 		$children = $value['children'];
-		
-		$list .= "<optgroup label=\"$name\">"; 
-		
+
+		$list .= "<optgroup label=\"$name\">";
+
 		foreach ($children as $child) {
 			$list .= "<option value=\"{$child['id']}\"";
 			if ($child['id'] == $catId) {
 				$list.= " selected";
 			}
-			
+
 			$list .= ">{$child['name']}</option>\r\n";
 		}
-		
+
 		$list .= "</optgroup>";
 	}
-	
+
 	return $list;
 }
 
@@ -248,22 +248,22 @@ function getPagingNav($sql, $pageNum, $rowsPerPage, $queryString = '')
 	$result  = mysql_query($sql) or die('Error, query failed. ' . mysql_error());
 	$row     = mysql_fetch_array($result, MYSQL_ASSOC);
 	$numrows = $row['numrows'];
-	
+
 	// how many pages we have when using paging?
 	$maxPage = ceil($numrows/$rowsPerPage);
-	
+
 	$self = $_SERVER['PHP_SELF'];
-	
+
 	// creating 'previous' and 'next' link
 	// plus 'first page' and 'last page' link
-	
+
 	// print 'previous' link only if we're not
 	// on page one
 	if ($pageNum > 1)
 	{
 		$page = $pageNum - 1;
 		$prev = " <a href=\"$self?page=$page{$queryString}\">[Prev]</a> ";
-	
+
 		$first = " <a href=\"$self?page=1{$queryString}\">[First Page]</a> ";
 	}
 	else
@@ -271,14 +271,14 @@ function getPagingNav($sql, $pageNum, $rowsPerPage, $queryString = '')
 		$prev  = ' [Prev] ';       // we're on page one, don't enable 'previous' link
 		$first = ' [First Page] '; // nor 'first page' link
 	}
-	
+
 	// print 'next' link only if we're not
 	// on the last page
 	if ($pageNum < $maxPage)
 	{
 		$page = $pageNum + 1;
 		$next = " <a href=\"$self?page=$page{$queryString}\">[Next]</a> ";
-	
+
 		$last = " <a href=\"$self?page=$maxPage{$queryString}{$queryString}\">[Last Page]</a> ";
 	}
 	else
@@ -286,16 +286,16 @@ function getPagingNav($sql, $pageNum, $rowsPerPage, $queryString = '')
 		$next = ' [Next] ';      // we're on the last page, don't enable 'next' link
 		$last = ' [Last Page] '; // nor 'last page' link
 	}
-	
+
 	// return the page navigation link
-	return $first . $prev . " Showing page <strong>$pageNum</strong> of <strong>$maxPage</strong> pages " . $next . $last; 
+	return $first . $prev . " Showing page <strong>$pageNum</strong> of <strong>$maxPage</strong> pages " . $next . $last;
 }
 
 function doChangePassword()
 {
 	// if we found an error save the error message in this variable
 	$errorMessage = '';
-	
+
 	$userName = $_POST['txtUserName'];
 	$email = $_POST['txtEmail'];
 	$uType    = $_POST['utype'];
@@ -305,7 +305,7 @@ function doChangePassword()
 	} else if ($email == '') {
 		$errorMessage = 'You must enter the Email';
 	} else {
-		
+
 		//check if user is customer
 		if($uType == 'customer')
 		{
@@ -316,11 +316,11 @@ function doChangePassword()
 			if (dbNumRows($result) == 1) {
 				$row = dbFetchAssoc($result);
 				$npass = $row['cpass'];
-				$errorMessage = "Your password is $npass. You can <a href='login.php'>Login Now</a>.";	
+				$errorMessage = "Your password is $npass. You can <a href='login.php'>Login Now</a>.";
 			}else {
 				$errorMessage = "You are not a Valid Customer.";
 			}
-					
+
 		}//if
 		elseif($uType == 'employee')
 		{
@@ -334,10 +334,10 @@ function doChangePassword()
 				$errorMessage = "Your password is $npass. You can <a href='login.php'>Login Now</a>.";
 			}else {
 				$errorMessage = "You are not a Valid Engineer.";
-			}		
+			}
 		}
-				
-			
+
+
 	}//else
 	return $errorMessage;
 }

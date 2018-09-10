@@ -60,7 +60,7 @@ elseif($mod == 'admin'){
 			
 		case 'compDetails' :
 			$content 	= 'adminCompDetails.php';		
-			$pageTitle 	= 'Complain Management System - View Complains Detail';
+			$pageTitle 	= 'Department Details - View Complains Detail';
 		break;
 		
 		case 'printRecipts' :
@@ -136,7 +136,7 @@ elseif($mod == 'admin'){
 
 		case 'addCourses' :
 			$content 	= 'addCourses.php';		
-			$pageTitle 	= 'Complain Management System - Edit Engineer';
+			$pageTitle 	= 'Add Courses - Admin';
 		break;
 
 		case 'deptDetails' :
@@ -193,7 +193,7 @@ elseif($mod == 'employee'){
 
 		case 'resultCheck' :
 			$content 	= 'resultCheck_new.php';		
-			$pageTitle 	= 'Complain Management System - Close complain';
+			$pageTitle 	= 'Result Check';
 		break;
 
 		case 'resultPageS_employee' :

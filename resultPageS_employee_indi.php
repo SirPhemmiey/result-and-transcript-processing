@@ -34,7 +34,7 @@ require_once 'library/functions.php';
 <body>
 <table width="1100" border="0" align="center" cellpadding="0" cellspacing="1" class="graybox">
  <tr> 
-  <td><img src="images/complains.jpg" width="1200" height="120"></td>
+  <td><img src="images/salem.jpg" width="1200" height="120"></td>
  </tr>
  <tr> 
   <td valign="top"> <table width="1200" border="0" cellspacing="0.5" cellpadding="10">
@@ -125,7 +125,7 @@ require_once 'library/functions.php';
 <?php }  ?>
 <?php
           //for year one first semester
-  $yearSql = "SELECT *, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '$level' AND courses.semester = '$sems' AND std.matric = '$matric'";
+  $yearSql = "SELECT *, courses.name AS courseName, courses.semester as Semester FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '$level' AND courses.semester = '$sems' AND std.matric = '$matric'";
   $yearResult = dbQuery($yearSql);
 		if (dbAffectedRows($yearResult) > 0) {
 ?>
@@ -145,6 +145,7 @@ require_once 'library/functions.php';
     <td>&nbsp;UNIT</td>
     <td>&nbsp;SCORE</td>
     <td>&nbsp;GRADE</td>
+    <td>&nbsp;SEMESTER</td>
     <td>&nbsp;POINT</td>
 
   </tr>
@@ -155,7 +156,7 @@ require_once 'library/functions.php';
 //   $yearone1stResult = dbQuery($yearone1stSql);
 
   //  //for calculating total units, GP, CGPA
-   $calcSql = "SELECT *, SUM(courses.units) AS courseUnits, SUM(results.points) as resultPoint, courses.name AS courseName FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '$level' AND courses.semester = '$sems' AND std.matric = '$matric'";
+   $calcSql = "SELECT *, SUM(courses.units) AS courseUnits, SUM(results.points) as resultPoint, courses.name AS courseName, courses.semester as Semester FROM results JOIN students_courses ON (results.students_courses_id = students_courses.id) JOIN courses ON (students_courses.course_id = courses.id) JOIN std ON (results.std_id = std.id) JOIN department ON (courses.department_id = department.id) WHERE courses.level = '$level' AND courses.semester = '$sems' AND std.matric = '$matric'";
    $calcResult = dbQuery($calcSql);
    while ($calcRow = dbFetchAssoc($calcResult)) {
      $tc = $calcRow['courseUnits'];
@@ -172,6 +173,7 @@ require_once 'library/functions.php';
     <td><?php echo $year['units']?></td>
     <td><?php echo $year['score']?></td>
     <td><?php echo $year['grade']?></td>
+    <td><?php echo ucfirst($year['Semester'])?></td>
     <td><?php echo $year['points']?></td>
     </tr>  
 

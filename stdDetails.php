@@ -1,5 +1,8 @@
 <h3>Student Details - Admin View</h3>
 <p>To add New Student <a href="view.php?mod=admin&view=stdReg">Click Here</a> </p>
+<?php if (isset($_SESSION['msg'])) {
+    echo $_SESSION['msg']; }?>
+<?php //session_unset('msg'); }?>
 <form action="" method="post"  name="frmListUser" id="frmListUser">
   <table width="680" border="0" align="center" cellpadding="2" cellspacing="1" class="text">
     <tr align="center" id="listTableHeader">
@@ -14,7 +17,7 @@
     </tr>
     <?php
 	$cust_id = (int)$_SESSION['user_id'];
-	$sql = "SELECT * 
+	$sql = "SELECT *
 			FROM std
 			ORDER BY name ASC";
 	$result = dbQuery($sql);

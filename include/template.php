@@ -26,7 +26,7 @@ $img = WEB_ROOT . 'images/complains.jpg';
 <br/><br/>
 <table width="900" border="0" align="center" cellpadding="0" cellspacing="1" class="graybox">
   <tr>
-    <td colspan="2"><img src="<?php echo $img; ?>" width="900" height="120"></td>
+    <td colspan="2"><img src="images/1.png" width="1145" height="250"></td>
   </tr>
   <tr>
     <td width="20%" valign="top" class="navArea"><p>&nbsp;</p>
